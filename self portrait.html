@@ -1,0 +1,141 @@
+<html>
+
+    <head>
+        <title>
+            First p5.js page
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+            //coordinate variables
+            var leftEyeCoordsX=168;
+            var leftEyeCoordsY=163;
+            var rightEyeCoordsX=238;
+            var rightEyeCoordsY=163;
+            var headCoordsX=130;
+            var headCoordsY=100;
+            var neckCoordsX=166;
+            var neckCoordsY=265;
+            var torsoCoordsX=123;
+            var torsoCoordsY=305;
+            var mouthCoordsX=190;
+            var mouthCoordsY=230;
+            var freckle1CoordsX=182;
+            var freckle1CoordsY=210;
+            var freckle2CoordsX=188;
+            var freckle2CoordsY=198;
+            var freckle3CoordsX=172;
+            var freckle3CoordsY=198;
+            var noseVert1X=196;
+            var noseVert1Y=203;
+            var noseVert2X=202;
+            var noseVert2Y=175;
+            var noseVert3X=225;
+            var noseVert3Y=203;
+            var bridgeVert1X=190;
+            var bridgeVert1Y=166;
+            var bridgeVert2X=220;
+            var bridgeVert2Y=166;
+            var textScale=10;
+            var textScaleDirection=1;
+            var count=0;
+            
+            //random numbers
+            var randomNumberLeftEye=Math.floor(Math.random()*10);
+            var randomNumberRightEye=Math.floor(Math.random()*10);
+            var randomNumberMouth=Math.floor(Math.random()*10);
+            var randomNumberNose=Math.floor(Math.random()*10);
+            var randomNumberHead=Math.floor(Math.random()*10);
+            
+           
+            
+            function setup()
+            {
+                createCanvas(400,400);
+            }
+            function draw()
+            {
+                background(0,0,0);
+                stroke(0, 255, 51);
+                
+                
+                textSize(textScale);
+                count++;
+                 textScale+= textScaleDirection;
+                 if(count > 5)
+                 {
+                    textScaleDirection *=-1;
+                    count = 0;
+                }
+                text('Hair In My Eyes',10,30,);
+                stroke(0, 255, 51); text('Neil Wells',315,386);
+                noStroke(); 
+                
+                //This is the head
+                fill(232,214,174); rect(headCoordsX,headCoordsY,120,180); 
+                 if(headCoordsX>=400 || headCoordsX <= 0 || headCoordsY>=400 || headCoordsY <= 0)
+                {
+                    randomNumberHead*=-1;
+                }
+                headCoordsX+= randomNumberHead;
+                headCoordsY+= randomNumberHead;
+
+                //neck
+                rect(neckCoordsX,neckCoordsY,50,60);
+                //torso 
+                fill(0, 255, 217); rect(torsoCoordsX,torsoCoordsY,120,180);
+                //this is the nose
+                fill(255, 130, 211); triangle(noseVert1X, noseVert1Y, noseVert2X, noseVert2Y, noseVert3X, noseVert3Y);
+                if(noseVert2Y>=400 || noseVert2Y <= 0)
+                {
+                    randomNumberNose*=-1;
+                }
+                noseVert2Y += randomNumberNose; noseVert1Y += randomNumberNose; noseVert3Y += randomNumberNose;
+                //this is the glasses  bridge
+                stroke(0,0,0); fill(0,0,0); line(bridgeVert1X,bridgeVert1Y,bridgeVert2X,bridgeVert2Y);
+                //left eye
+                noStroke(); fill(158,249,255); circle(leftEyeCoordsX,leftEyeCoordsY,60); 
+                if(leftEyeCoordsX>=400 || leftEyeCoordsX <= 0)
+                {
+                    randomNumberLeftEye*=-1;
+                }
+                leftEyeCoordsX += randomNumberLeftEye;
+                //right eye
+                circle(rightEyeCoordsX,rightEyeCoordsY,60);
+                if(rightEyeCoordsY>=400 || rightEyeCoordsY <= 0)
+                {
+                    randomNumberRightEye*=-1;
+                }
+                rightEyeCoordsY += randomNumberRightEye;
+                //this is the mouth
+                fill(240, 120, 120); ellipse(mouthCoordsX,mouthCoordsY,40,10);
+                if(mouthCoordsX>=400 || mouthCoordsX <= 0)
+                {
+                    randomNumberMouth*=-1;
+                }
+                mouthCoordsX += randomNumberMouth; 
+                //this is the freckels 
+                strokeWeight(2); stroke(255, 179, 148); point(freckle1CoordsX,freckle1CoordsY); point(freckle2CoordsX,freckle2CoordsY); point(freckle3CoordsX,freckle3CoordsY); 
+                //this is the hair
+                noStroke();
+                fill(163, 120, 0); beginShape();
+                vertex(194, 105);
+                vertex(124, 335);
+                vertex(90, 186);
+                vertex(91, 140);
+                vertex(140, 87);
+                vertex(196,87);
+                vertex(227,94);
+                vertex(265,100);
+                vertex(275,194);
+                vertex(270,217);
+                vertex(262,247);
+                vertex(256,287);
+                endShape(CLOSE);
+
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
